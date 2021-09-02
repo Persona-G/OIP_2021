@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>OIP</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="/static/styles/bootstrap4/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/styles/index.css">
+
+    <script src="/static/js/jquery-3.3.1.min.js"></script>
+    <script src="/static/js/index.js"></script>
+
+</head>
+
+<body>
+
+    <div id="screen-saver">
+        <div class="clock-container">
+
+            <div class="clock-number num1">  
+                <div>1</div>  
+            </div>  
+
+            <div class="clock-number num2">  
+                <div>2</div>  
+            </div>  
+
+            <div class="clock-number num3">  
+                <div>3</div>  
+            </div>  
+
+            <div class="clock-number num4">  
+                <div>4</div>  
+            </div>
+
+            <div class="clock-number num5">  
+                <div>5</div>  
+            </div>  
+
+            <div class="clock-number num6">  
+                <div>6</div>  
+            </div> 
+
+            <div class="clock-number num7">  
+                <div>7</div>  
+            </div>
+
+            <div class="clock-number num8">  
+                <div>8</div>  
+            </div>
+
+            <div class="clock-number num9">  
+                <div>9</div>  
+            </div>
+
+            <div class="clock-number num10">  
+                <div>10</div>  
+            </div>
+
+            <div class="clock-number num11">  
+                <div>11</div>  
+            </div>
+
+            <div class="clock-number num12">  
+                <div>12</div>  
+            </div>
+
+            <div class="clock-hand" id="sec">  
+                <div class="second-hand"></div>  
+            </div>  
+
+            <div class="clock-hand" id="min">  
+                <div class="minute-hand"></div>  
+            </div>
+
+            <div class="clock-hand" id="hr">  
+                <div class="hour-hand"></div>  
+            </div>  
+        </div>
+
+        <div class="current-day"></div> 
+    </div>
+
+    <div id="error" class="alert alert-danger" role="alert">
+        Please ensure all the checkboxes are check!
+    </div>
+
+    <div id="stain" class="alert alert-danger" role="alert">
+        Stain Detected! Continuing on Washing Stage...
+    </div>
+
+    <div id="water" class="alert alert-danger" role="alert">
+        Wet Syringes Detected! Continuing on Drying Stage...
+    </div>
+
+    <div id="clean" class="alert alert-success" role="alert">
+        No Stain Detected! Proceeding to Drying Stage ...
+    </div>
+
+    <div id="dry" class="alert alert-success" role="alert">
+        No Wet Syringes Detected! Proceeding on Sterilization Stage ...
+    </div>
+
+    <div id="flex-container" class="testimonials" style="margin-top: 15px;">
+        <div id="left-zone">
+            <ul class="list">
+
+                <li class="item">
+                    <input type="radio" id="radio_testimonial-1" name="basic_carousel" checked="checked" />
+                    <label class="label_testimonial-1" for="radio_testimonial-1">Washing</label>
+
+                    <div class="content-test content_testimonial-1">
+                        <span class="picto"></span>
+                        <h1>Washing Stage</h1>
+
+                        <div class="proceed">
+                            <p>“Please ensure the following checklist is checked before proceeding.”</p>
+
+                            <div style="width: 60%; margin: 0 auto;">
+                                <input type="checkbox" name="check-1" value="check-1" id="check-1" style="display: block; display: block; float: left; margin-top: 5px;">
+                                <span style="margin-left: 15px;">Please ensure the cover is closed.</span>
+                            </div>
+
+                            <div style="width: 60%; margin: 0 auto;">
+                                <input type="checkbox" name="check-2" value="check-2" id="check-2" style="display: block; display: block; float: left; margin-top: 5px;">
+                                <span style="margin-left: 15px;">Please ensure the water is fill up.</span>
+                            </div>
+
+                            <button type="button" class="btn btn-primary" style="margin-top: 20px;" onclick="wash()">Proceed</button>
+                        </div>
+
+                        <div id="app"></div>
+
+                        <button id="washStop" type="button" class="btn btn-danger" style="margin-top: 20px;" onclick="washStop()">Stop</button>
+                    
+                        <p id="washCurrent"></p>
+                    </div>
+                </li>
+
+                <li class="item">
+                    <input type="radio" id="radio_testimonial-2" name="basic_carousel" />
+                    <label class="label_testimonial-2" for="radio_testimonial-2">Drying</label>
+
+                    <div class="content-test content_testimonial-2">
+                        <span class="picto"></span>
+                        <h1>Drying Stage</h1>
+
+                        <div class="proceed">
+                            <p>“Please ensure the following checklist is checked before proceeding.”</p>
+
+                            <div style="width: 60%; margin: 0 auto;">
+                                <input type="checkbox" name="check-3" value="check-3" id="check-3" style="display: block; display: block; float: left; margin-top: 5px;">
+                                <span style="margin-left: 15px;">Please ensure the cover is closed.</span>
+                            </div>
+
+                            <button type="button" class="btn btn-primary" style="margin-top: 20px;" onclick="dry()">Proceed</button>
+                        </div>
+
+                        <div id="app1"></div>
+
+                        <button id="dryStop" type="button" class="btn btn-danger" style="margin-top: 20px;" onclick="dryStop()">Stop</button>
+                        
+                        <p id="dryCurrent"></p>
+
+                    </div>
+                </li>
+
+                <li class="item">
+                    <input type="radio" id="radio_testimonial-3" name="basic_carousel" />
+                    <label class="label_testimonial-3" for="radio_testimonial-3">Sterilization</label>
+                    <div class="content-test content_testimonial-3">
+                        <span class="picto"></span>
+                        <h1>Sterilization Stage</h1>
+                        <div class="proceed">
+                            <p>“Please ensure the following checklist is checked before proceeding.”</p>
+
+                            <div style="width: 60%; margin: 0 auto;">
+                                <input type="checkbox" name="check-4" value="check-4" id="check-4" style="display: block; display: block; float: left; margin-top: 5px;">
+                                <span style="margin-left: 15px;">Please ensure the cover is closed.</span>
+                            </div>
+
+                            <button type="button" class="btn btn-primary" style="margin-top: 20px;" onclick="sterilize()">Proceed</button>
+                        </div>
+
+                        <div id="app2"></div>
+
+                        <button id="sterilizeStop" type="button" class="btn btn-danger" style="margin-top: 20px;" onclick="sterilizeStop()">Stop</button>
+
+                        <p id="sterilizeCurrent"></p>
+
+                    </div>
+                </li>
+
+                <li class="item">
+                    <input type="radio" id="radio_testimonial-4" name="basic_carousel" />
+                    <label class="label_testimonial-4" for="radio_testimonial-4">Logs</label>
+
+                    <div class="content-test content_testimonial-4">
+                        <span class="picto"></span>
+                        <h1>Logs</h1>
+
+                        <table class="table-light table-sm" style="width: 450px; font-size: 10px;">
+                            <thead>
+                              <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Date & Time</th>
+                                <th scope="col">Message</th>
+                                <th scope="col">Message Type</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <th scope="row">1</th>
+                                <td id="dateTime1"></td>
+                                <td id="msg1"></td>
+                                <td id="msgType1"></td>
+                              </tr>
+                              <tr>
+                                <th scope="row">2</th>
+                                <td id="dateTime2"></td>
+                                <td id="msg2"></td>
+                                <td id="msgType2"></td>
+                              </tr>
+                              <tr>
+                                <th scope="row">3</th>
+                                <td id="dateTime3"></td>
+                                <td id="msg3"></td>
+                                <td id="msgType3"></td>
+                              </tr>
+                              <tr>
+                                <th scope="row">4</th>
+                                <td id="dateTime4"></td>
+                                <td id="msg4"></td>
+                                <td id="msgType4"></td>
+                              </tr>
+                            </tbody>
+                          </table>
+
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+        
+        <div id="right-zone"></div>
+    </div>
+
+    <!-- The Loading Screen -->
+    <div id="loadingModal" class="modal">
+        <div class="e-loadholder">
+            <div class="m-loader">
+                <span class="e-text" style="font-size: 15px;">DETECTING...</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- The Modal -->
+    <div id="washModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirmation</h5>
+                <button type="button" id="closeWash" class="close" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <p>Comfirm to proceed on WASHING ?</p>
+            </div>
+
+            <div class="modal-footer">
+                <button id="closeWashBtn" type="button" class="btn btn-secondary">Close</button>
+                <button id="confirmWashBtn" type="button" class="btn btn-success">Confirm</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="dryModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirmation</h5>
+                <button type="button" id="closeDry" class="close" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <p>Comfirm to proceed on DRYING ?</p>
+            </div>
+
+            <div class="modal-footer">
+                <button id="closeDryBtn" type="button" class="btn btn-secondary">Close</button>
+                <button id="confirmDryBtn" type="button" class="btn btn-success">Confirm</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="sterilizationModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirmation</h5>
+                <button type="button" id="closeSterilization" class="close" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <p>Comfirm to proceed on STERILIZATION ?</p>
+            </div>
+
+            <div class="modal-footer">
+                <button id="closeSterilizationBtn" type="button" class="btn btn-secondary">Close</button>
+                <button id="confirmSterilizationBtn" type="button" class="btn btn-success">Confirm</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="stopModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirmation</h5>
+                <button type="button" id="closeStop" class="close" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <p id="stopContent"></p>
+            </div>
+
+            <div class="modal-footer">
+                <button id="closeStopBtn" type="button" class="btn btn-secondary">Close</button>
+                <button id="confirmStopBtn" type="button" class="btn btn-success">Confirm</button>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <span class="text-muted">Copyright © 2021 OIP, All Rights Reserved.</span>
+        </div>
+    </footer>
+
+</body>
+
+</html>
+

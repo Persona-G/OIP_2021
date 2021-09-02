@@ -1,0 +1,7 @@
+
+ml/model/mySyringe.pb
+ml/model/mySyringe.h5
+ml/dataset/testX.cpickle
+ml/dataset/testY.cpickle
+ml/dataset/trainX.cpickle
+ml/dataset/trainY.cpickle
