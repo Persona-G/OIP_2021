@@ -1,7 +1,7 @@
 # OIP_2021
 CSC3003 Design Project OIP
 
-## Git Clone the entire folder to run.
+## Git Clone the entire folder to run the project. <br/> Flash the code inside the Arduino and place both ml and ui folders on the Raspberry Pi
 
 ## As the models and dataset file are too larged to be uploaded, proceed to the link provided below to download them. <br/> Link to model and dataset: https://drive.google.com/drive/folders/1_Uu1XjCyvAMpE9BSJFMTbGIv03CzWvD2
 
