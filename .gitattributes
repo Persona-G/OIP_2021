@@ -1,3 +1,7 @@
 *.cpickle filter=lfs diff=lfs merge=lfs -text
 *.h5 filter=lfs diff=lfs merge=lfs -text
 *.pb filter=lfs diff=lfs merge=lfs -text
+future_mlYOLOv3darknet-syringe-data.zip filter=lfs diff=lfs merge=lfs -text
+future_mlYOLOv4darknet-yolov4-syringe-4k-images.zip filter=lfs diff=lfs merge=lfs -text
+future_mlYOLOv4yolo-obj_last_v2.weights filter=lfs diff=lfs merge=lfs -text
+future_mlYOLOv4yolov4-416.tflite filter=lfs diff=lfs merge=lfs -text
